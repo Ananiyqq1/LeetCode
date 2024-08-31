@@ -43,3 +43,15 @@ print(isPalindrome(1221))
 
 
 
+# solve 3
+# water bottles (1518) 
+
+def numWaterBottles(numBottles: int, numExchange: int) -> int:
+    res = numBottles
+    while numBottles >= numExchange:
+        numRemainder = numBottles % numExchange
+        numBottles//=numExchange
+        res += numBottles
+        numBottles += numRemainder
+    return res
+print(numWaterBottles(9,3))
