@@ -82,3 +82,29 @@ def isValid(s: str) -> bool:
             return False
     return stack == []            
 print(isValid("{][]}"))
+
+
+
+# solve 6
+def mySqrt(x: int) -> int:
+#ONLY WORKS FOR PERFECT SQUARES 
+    t = 1
+    while t * t < x:
+        t = (t + x/t)/2
+    return int(t)
+print(mySqrt(16))
+def mySqrt(x: int) -> int:
+# GENERAL APPROACH
+    epsilon = 0.01
+    low = 0.0
+    high = max(x,1)
+    ans = (high + low)/2.0
+    if x == 1 :return 1
+    while abs(ans*ans - x) >= epsilon and ans <= x:
+        if ans*ans < x:
+            low = ans
+        else:
+            high = ans
+        ans = (high + low)/2.0         
+    return int(ans)
+print(mySqrt(157))
