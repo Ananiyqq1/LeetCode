@@ -55,3 +55,30 @@ def numWaterBottles(numBottles: int, numExchange: int) -> int:
         numBottles += numRemainder
     return res
 print(numWaterBottles(9,3))
+
+
+
+# solve 4
+# plus one (66)
+
+def plusOne(digits: list[int]) -> list[int]:
+    numvar = int("".join([str(d)for d in digits]))+1
+    return [int(d) for d in str(numvar)]
+print(plusOne([1,2,3]))
+
+
+
+# solve 5
+# valid parentheses (20)
+def isValid(s: str) -> bool:
+    stack = []
+    paren = {"}":"{","]":"[",")":"("}
+    for c in s:
+        if c in paren.values():
+            stack.append(c)
+        elif stack and paren[c] == stack[-1]:
+            stack.pop()
+        else:
+            return False
+    return stack == []            
+print(isValid("{][]}"))
