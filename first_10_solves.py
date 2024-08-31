@@ -94,6 +94,7 @@ def mySqrt(x: int) -> int:
     return int(t)
 print(mySqrt(16))
 def mySqrt(x: int) -> int:
+
 # GENERAL APPROACH
     epsilon = 0.01
     low = 0.0
@@ -108,3 +109,71 @@ def mySqrt(x: int) -> int:
         ans = (high + low)/2.0         
     return int(ans)
 print(mySqrt(157))
+
+
+
+# solve 7
+# climbing stairs (70)
+def climbStairs(n: int) -> int:
+# RECURSIVE APPROACH
+    if n == 1 or n == 0:
+        return 1
+    elif n == 2:
+        return 2    
+    else:
+        return climbStairs(n-1) + climbStairs(n-2)
+print(climbStairs(7))
+
+# LINEAR APPROACH
+def climbStairs(n: int) -> int:
+    if n <= 2: return n
+    pp,p,c = 1,2,0
+    for i in range(2,n):
+        c = pp + p
+        pp = p
+        p = c
+    return c
+print(climbStairs(4))
+
+
+
+# solve 8
+# find the winner of the circular game (1823)
+def findTheWinner(n: int, k: int) -> int:
+    def fun(n,k):
+        if n == 1: return 0
+        else:
+            return (k + fun(n-1,k))%n 
+    return fun(n,k)+1
+print(findTheWinner(5,2))
+
+
+
+# solve 9
+# search insert position (35)
+def searchInsert(nums: list[int], target: int) -> int:
+    l, r = 0, len(nums) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return l
+print(searchInsert([1,3,5,6],5))
+
+
+
+# solve 10
+# average waiting time (1701)
+def averageWaitingTime(customers: list[list[int]]) -> float:
+    last = 0
+    total = 0
+    for x,y in customers:
+        last = max(x,last)
+        total += last - x + y
+        last+=y 
+    return total / len(customers)
+print(averageWaitingTime([[1,2],[2,5],[4,3]]))
