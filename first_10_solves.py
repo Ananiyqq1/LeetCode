@@ -20,3 +20,26 @@ def twoSum(nums: list[int],target:int)-> list[int]:
 print(twoSum([1,2,3,4,5],6))
 
 
+
+# solve 2
+# palindrome number (9)
+
+# string approach
+def isPalindrome(x:int)-> bool:
+    char = str(x)
+    return char == char[::-1]
+print(isPalindrome(1234))
+
+# number approach
+def isPalindrome(x:int)-> bool:
+    temp=x
+    rev=0
+    while temp > 0:
+        last=temp%10
+        rev= rev*10+last
+        temp//=10
+    return rev == x 
+print(isPalindrome(1221))
+
+
+
